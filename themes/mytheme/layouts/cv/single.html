@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="cv-page">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-avatar">
+        {{ if .Site.Params.avatar }}
+        <img src="{{ .Site.Params.avatar }}" alt="{{ .Site.Params.author }}" />
+        {{ else }}
+        <div class="cv-avatar-placeholder">{{ substr .Site.Params.author 0 1 }}</div>
+        {{ end }}
+      </div>
+      <div class="cv-intro">
+        <h1>{{ .Site.Params.author }}</h1>
+        <p class="cv-tagline">{{ .Site.Params.tagline }}</p>
+        <div class="cv-contacts">
+          <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+          <a href="{{ .Site.Params.githubURL }}" target="_blank">GitHub</a>
+        </div>
+        <a href="/cv.pdf" class="btn btn-primary" download>⬇ Download PDF</a>
+      </div>
+    </div>
+
+    <div class="cv-body">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+{{ end }}

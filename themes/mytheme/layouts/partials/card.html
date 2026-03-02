@@ -1,0 +1,42 @@
+{{ $section := .Section }}
+{{ $icons := dict "electronics" "⚡" "photography" "📷" "thoughts" "💭" }}
+{{ $icon := index $icons $section | default "📝" }}
+
+<article class="post-card" data-section="{{ $section }}">
+  {{ if .Params.cover }}
+  <div class="card-image">
+    <img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy" />
+    <div class="card-image-overlay"></div>
+  </div>
+  {{ end }}
+
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="card-section">{{ $icon }} {{ $section | title }}</span>
+      <span class="card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+    </div>
+
+    <h2 class="card-title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+
+    {{ if .Params.subtitle }}
+    <p class="card-subtitle">{{ .Params.subtitle }}</p>
+    {{ end }}
+
+    <p class="card-excerpt">{{ .Summary | truncate 120 }}</p>
+
+    <div class="card-footer">
+      {{ if .Params.tags }}
+      <div class="card-tags">
+        {{ range first 3 .Params.tags }}
+        <a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+      <a href="{{ .RelPermalink }}" class="read-more" aria-label="Read {{ .Title }}">
+        Read →
+      </a>
+    </div>
+  </div>
+</article>

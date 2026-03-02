@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+{{ $icons := dict "electronics" "⚡" "photography" "📷" "thoughts" "💭" }}
+{{ $icon := index $icons .Section | default "📝" }}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-icon">{{ $icon }}</div>
+      <h1>{{ .Title }}</h1>
+      {{ with .Content }}<div class="page-desc">{{ . }}</div>{{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="posts-section">
+  <div class="container">
+
+    <!-- Filter bar -->
+    {{ if .Params.tags }}
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      {{ range .Params.tags }}
+      <button class="filter-btn" data-filter="{{ . | urlize }}">{{ . }}</button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="posts-grid">
+      {{ range .Paginator.Pages }}
+        {{ partial "card.html" . }}
+      {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="pagination" aria-label="Pagination">
+      {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}" class="pag-btn">← Newer</a>
+      {{ end }}
+      <span class="pag-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
+      {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}" class="pag-btn">Older →</a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+  </div>
+</section>
+
+{{ end }}

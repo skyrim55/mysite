@@ -1,0 +1,110 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span> Currently learning &amp; building
+      </div>
+      <h1 class="hero-title">
+        Hi, I'm <span class="highlight">{{ .Site.Params.author }}</span>
+      </h1>
+      <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+      <p class="hero-desc">{{ .Site.Params.description }}</p>
+      <div class="hero-actions">
+        <a href="/cv/" class="btn btn-primary">View CV</a>
+        <a href="/electronics/" class="btn btn-ghost">Explore Work →</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="circuit-art">
+        <div class="circuit-node n1"></div>
+        <div class="circuit-node n2"></div>
+        <div class="circuit-node n3"></div>
+        <div class="circuit-line l1"></div>
+        <div class="circuit-line l2"></div>
+        <div class="circuit-line l3"></div>
+        <div class="circuit-pulse"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Quick Links -->
+<section class="section-nav">
+  <div class="container">
+    <div class="section-cards">
+      <a href="/electronics/" class="section-card" data-section="electronics">
+        <span class="section-icon">⚡</span>
+        <div class="section-info">
+          <h3>Electronics</h3>
+          <p>Circuits, microcontrollers, projects &amp; notes</p>
+        </div>
+        <span class="section-arrow">→</span>
+      </a>
+      <a href="/photography/" class="section-card" data-section="photography">
+        <span class="section-icon">📷</span>
+        <div class="section-info">
+          <h3>Photography</h3>
+          <p>Shots, gear notes, and editing thoughts</p>
+        </div>
+        <span class="section-arrow">→</span>
+      </a>
+      <a href="/thoughts/" class="section-card" data-section="thoughts">
+        <span class="section-icon">💭</span>
+        <div class="section-info">
+          <h3>Thoughts</h3>
+          <p>Essays, opinions &amp; random musings</p>
+        </div>
+        <span class="section-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Posts -->
+<section class="latest-posts">
+  <div class="container">
+    <div class="section-header">
+      <h2>Latest Posts</h2>
+      <p>Fresh from the lab and the field</p>
+    </div>
+    <div class="posts-grid" id="postsGrid">
+      {{ $pages := where .Site.RegularPages "Section" "ne" "" }}
+      {{ range first 6 ($pages.ByDate.Reverse) }}
+        {{ partial "card.html" . }}
+      {{ end }}
+    </div>
+    {{ if gt (len $pages) 6 }}
+    <div class="load-more-wrap">
+      <a href="/posts/" class="btn btn-ghost">All Posts</a>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Learning Progress -->
+<section class="progress-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>⚡ Learning Tracker</h2>
+      <p>Things I'm actively studying</p>
+    </div>
+    <div class="progress-grid">
+      {{ range .Site.Data.learning }}
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-label">{{ .topic }}</span>
+          <span class="progress-pct">{{ .percent }}%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="--pct: {{ .percent }}%"></div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

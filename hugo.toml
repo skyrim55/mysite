@@ -1,0 +1,43 @@
+baseURL      = "https://yoursite.com/"
+languageCode = "en-us"
+title        = "Your Site Name"
+theme        = "mytheme"
+paginate     = 9
+
+[params]
+  author      = "Your Name"
+  description = "Learning electronics and photography"
+  tagline     = "Builder. Learner. Photographer."
+  githubURL   = "https://github.com/yourusername"
+
+[[menu.main]]
+  name   = "Home"
+  url    = "/"
+  weight = 1
+
+[[menu.main]]
+  name   = "Electronics"
+  url    = "/electronics/"
+  weight = 2
+
+[[menu.main]]
+  name   = "Photography"
+  url    = "/photography/"
+  weight = 3
+
+[[menu.main]]
+  name   = "Thoughts"
+  url    = "/thoughts/"
+  weight = 4
+
+[[menu.main]]
+  name   = "CV"
+  url    = "/cv/"
+  weight = 5
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  style   = "monokai"
+  lineNos = true

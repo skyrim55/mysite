@@ -1,0 +1,4 @@
+name        = "mytheme"
+description = "My custom Hugo theme"
+author      = "Ritesh"
+license     = "MIT"

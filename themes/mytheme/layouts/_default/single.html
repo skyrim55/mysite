@@ -1,0 +1,87 @@
+{{ define "main" }}
+
+{{ $icons := dict "electronics" "⚡" "photography" "📷" "thoughts" "💭" }}
+{{ $icon := index $icons .Section | default "📝" }}
+
+<article class="single-post">
+
+  <!-- Post Header -->
+  <header class="post-header">
+    {{ if .Params.cover }}
+    <div class="post-cover">
+      <img src="{{ .Params.cover }}" alt="{{ .Title }}" />
+    </div>
+    {{ end }}
+    <div class="container">
+      <div class="post-breadcrumb">
+        <a href="/">Home</a> /
+        <a href="/{{ .Section }}/">{{ $icon }} {{ .Section | title }}</a>
+      </div>
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="post-subtitle">{{ . }}</p>{{ end }}
+      <div class="post-meta">
+        <span>📅 {{ .Date.Format "January 2, 2006" }}</span>
+        <span>⏱ {{ .ReadingTime }} min read</span>
+        {{ if .Params.difficulty }}
+        <span class="difficulty diff-{{ .Params.difficulty }}">{{ .Params.difficulty | title }}</span>
+        {{ end }}
+      </div>
+      {{ if .Params.tags }}
+      <div class="post-tags">
+        {{ range .Params.tags }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </header>
+
+  <!-- Table of Contents -->
+  {{ if .TableOfContents }}
+  <div class="container">
+    <aside class="toc-wrapper">
+      <button class="toc-toggle" id="tocToggle">📋 Table of Contents</button>
+      <div class="toc-content" id="tocContent">
+        {{ .TableOfContents }}
+      </div>
+    </aside>
+  </div>
+  {{ end }}
+
+  <!-- Post Body -->
+  <div class="post-body">
+    <div class="container">
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Footer -->
+  <footer class="post-footer">
+    <div class="container">
+      {{ if .Params.tags }}
+      <div class="post-tags-footer">
+        <strong>Tagged:</strong>
+        {{ range .Params.tags }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}
+      </div>
+      {{ end }}
+
+      <!-- Prev/Next -->
+      <nav class="post-nav">
+        {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" class="post-nav-link prev">
+          <span class="nav-label">← Previous</span>
+          <span class="nav-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+        {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="post-nav-link next">
+          <span class="nav-label">Next →</span>
+          <span class="nav-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+      </nav>
+    </div>
+  </footer>
+
+</article>
+{{ end }}
