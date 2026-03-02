@@ -1,6 +1,6 @@
 baseURL      = "https://yoursite.com/"
 languageCode = "en-us"
-title        = "Your Site Name"
+title        = "Skyrim"
 theme        = "mytheme"
 paginate     = 9
 
