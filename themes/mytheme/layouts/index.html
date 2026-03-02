@@ -1,110 +1,173 @@
 {{ define "main" }}
 
-<!-- Hero Section -->
+<!-- Background layers -->
+<div class="bg-grid"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- ═══════════════════════════════════
+     HERO
+════════════════════════════════════ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="pulse-dot"></span> Currently learning &amp; building
-      </div>
-      <h1 class="hero-title">
-        Hi, I'm <span class="highlight">{{ .Site.Params.author }}</span>
-      </h1>
-      <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
-      <p class="hero-desc">{{ .Site.Params.description }}</p>
-      <div class="hero-actions">
-        <a href="/cv/" class="btn btn-primary">View CV</a>
-        <a href="/electronics/" class="btn btn-ghost">Explore Work →</a>
-      </div>
+
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      Currently learning &amp; building
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="circuit-art">
-        <div class="circuit-node n1"></div>
-        <div class="circuit-node n2"></div>
-        <div class="circuit-node n3"></div>
-        <div class="circuit-line l1"></div>
-        <div class="circuit-line l2"></div>
-        <div class="circuit-line l3"></div>
-        <div class="circuit-pulse"></div>
-      </div>
+
+    <h1 class="hero-title">
+      Hey, I'm<br>
+      <span class="highlight">Ritesh Pradhan</span>
+    </h1>
+
+    <p class="hero-tagline">Exploring circuits, light &amp; ideas.</p>
+    <p style="color:var(--text2);font-size:.95rem;max-width:520px;">
+      I build electronics projects, shoot photography, and write about what I learn along the way.
+      This is my personal learning journal.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/cv/" class="btn btn-primary">View CV →</a>
+      <a href="/electronics/" class="btn btn-ghost">See My Projects</a>
     </div>
+
   </div>
 </section>
 
-<!-- Section Quick Links -->
+<!-- ═══════════════════════════════════
+     SECTION NAV CARDS
+════════════════════════════════════ -->
 <section class="section-nav">
   <div class="container">
     <div class="section-cards">
-      <a href="/electronics/" class="section-card" data-section="electronics">
-        <span class="section-icon">⚡</span>
+
+      <a href="/electronics/" class="section-card">
+        <div class="section-icon">⚡</div>
         <div class="section-info">
           <h3>Electronics</h3>
-          <p>Circuits, microcontrollers, projects &amp; notes</p>
+          <p>Circuits, Arduino, PCB projects</p>
         </div>
         <span class="section-arrow">→</span>
       </a>
-      <a href="/photography/" class="section-card" data-section="photography">
-        <span class="section-icon">📷</span>
+
+      <a href="/photography/" class="section-card">
+        <div class="section-icon">📷</div>
         <div class="section-info">
           <h3>Photography</h3>
-          <p>Shots, gear notes, and editing thoughts</p>
+          <p>Shoots, settings, editing notes</p>
         </div>
         <span class="section-arrow">→</span>
       </a>
-      <a href="/thoughts/" class="section-card" data-section="thoughts">
-        <span class="section-icon">💭</span>
+
+      <a href="/thoughts/" class="section-card">
+        <div class="section-icon">💭</div>
         <div class="section-info">
           <h3>Thoughts</h3>
-          <p>Essays, opinions &amp; random musings</p>
+          <p>Ideas, reflections, essays</p>
         </div>
         <span class="section-arrow">→</span>
       </a>
+
     </div>
   </div>
 </section>
 
-<!-- Latest Posts -->
-<section class="latest-posts">
-  <div class="container">
-    <div class="section-header">
-      <h2>Latest Posts</h2>
-      <p>Fresh from the lab and the field</p>
-    </div>
-    <div class="posts-grid" id="postsGrid">
-      {{ $pages := where .Site.RegularPages "Section" "ne" "" }}
-      {{ range first 6 ($pages.ByDate.Reverse) }}
-        {{ partial "card.html" . }}
-      {{ end }}
-    </div>
-    {{ if gt (len $pages) 6 }}
-    <div class="load-more-wrap">
-      <a href="/posts/" class="btn btn-ghost">All Posts</a>
-    </div>
-    {{ end }}
-  </div>
-</section>
-
-<!-- Learning Progress -->
+<!-- ═══════════════════════════════════
+     LEARNING TRACKER
+════════════════════════════════════ -->
 <section class="progress-section">
   <div class="container">
-    <div class="section-header">
-      <h2>⚡ Learning Tracker</h2>
-      <p>Things I'm actively studying</p>
-    </div>
-    <div class="progress-grid">
-      {{ range .Site.Data.learning }}
+    <h2>Currently Learning</h2>
+    <p>Live progress — updated as I improve</p>
+
+    <div class="progress-list">
+      {{ range .Site.Data.learning.topics }}
       <div class="progress-item">
-        <div class="progress-header">
-          <span class="progress-label">{{ .topic }}</span>
+        <div class="progress-label">
+          <span class="progress-name">{{ .icon }} {{ .name }}</span>
           <span class="progress-pct">{{ .percent }}%</span>
         </div>
         <div class="progress-bar">
-          <div class="progress-fill" style="--pct: {{ .percent }}%"></div>
+          <div class="progress-fill" data-width="{{ .percent }}%"></div>
         </div>
       </div>
       {{ end }}
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════
+     LATEST POSTS — ALL SECTIONS
+════════════════════════════════════ -->
+<section class="latest-posts">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Latest Posts</h2>
+      <p>Everything I've been working on recently</p>
+    </div>
+
+    <div class="posts-grid">
+      {{ range first 6 .Site.RegularPages.ByDate.Reverse }}
+      {{ if not .Params.draft }}
+      <article class="post-card">
+        {{ if .Params.cover }}
+        <div class="card-image">
+          <img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy"/>
+        </div>
+        {{ end }}
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-section">{{ .Section }}</span>
+            <span class="card-date">{{ .Date.Format "02 Jan 2006" }}</span>
+          </div>
+          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="card-excerpt">{{ .Summary | truncate 120 }}</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              {{ range first 3 .Params.tags }}
+              <a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>
+              {{ end }}
+            </div>
+            <a href="{{ .RelPermalink }}" class="read-more">Read →</a>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+
+<!-- Scroll reveal + progress bar animation -->
+<script>
+(function(){
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.post-card, .section-card').forEach(el => obs.observe(el));
+
+  // Progress bars animate on scroll
+  const progObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.progress-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+        progObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const progressSection = document.querySelector('.progress-section');
+  if (progressSection) progObs.observe(progressSection);
+})();
+</script>
 
 {{ end }}

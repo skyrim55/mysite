@@ -1,14 +1,18 @@
-baseURL      = "https://yoursite.com/"
+baseURL      = "https://yoursite.netlify.app/"
 languageCode = "en-us"
 title        = "Skyrim"
 theme        = "mytheme"
 paginate     = 9
 
 [params]
-  author      = "Your Name"
-  description = "Learning electronics and photography"
-  tagline     = "Builder. Learner. Photographer."
-  githubURL   = "https://github.com/yourusername"
+  author      = "Ritesh Pradhan"
+  description = "I build circuits, shoot photos, and write about ideas."
+  tagline     = "Exploring circuits, light & ideas."
+  githubURL   = "https://github.com/skyrim55"
+  email       = "riteshpradhan55@example.com"
+  heroLine1   = "Hey, I'm"
+  heroName    = "Ritesh Pradhan"
+  heroBadge   = "Currently learning & building"
 
 [[menu.main]]
   name   = "Home"
