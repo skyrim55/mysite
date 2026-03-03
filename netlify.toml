@@ -1,0 +1,21 @@
+# ── Place this file in the ROOT of your mysite/ folder ──
+# This tells Netlify which Hugo version to use (fixes the blank/broken site)
+
+[build]
+  publish = "public"
+  command = "hugo --minify"
+
+[build.environment]
+  HUGO_VERSION = "0.128.0"
+  HUGO_ENV     = "production"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
