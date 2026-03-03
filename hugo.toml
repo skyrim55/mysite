@@ -1,47 +1,43 @@
-# ── mysite/hugo.toml ──
-# IMPORTANT: Replace the baseURL with your actual Netlify URL
-
-baseURL      = "https://YOUR-SITE-NAME.netlify.app/"
+baseURL      = "https://yoursite.netlify.app/"
 languageCode = "en-us"
 title        = "Skyrim"
 theme        = "mytheme"
 paginate     = 9
 
-canonifyURLs = false
-relativeURLs = false
-
 [params]
   author      = "Ritesh Pradhan"
-  description = "Electrical Engineer & Astro Photographer — circuits by day, stars by night."
-  githubURL   = "https://github.com/yourusername"
-
-  heroName    = "Ritesh"
-  heroSurname = "Pradhan"
-  heroWord1   = "circuits"
-  heroWord2   = "stars"
-
-  aboutLine1 = "I am an electrical engineer who builds circuits, designs PCBs, and dives deep into RF and embedded systems."
-  aboutLine2 = "When I step away from the workbench I am out under dark skies chasing galaxies with my camera."
-
-  [[params.aboutCards]]
-    icon = "⚡"; title = "Electronics"; desc = "Arduino, ESP32, PCB design, RF & embedded systems"
-  [[params.aboutCards]]
-    icon = "🔭"; title = "Astro Photography"; desc = "Deep sky, Milky Way, long exposure, image stacking"
-  [[params.aboutCards]]
-    icon = "📡"; title = "RF & Signals"; desc = "Antenna design, SDR, wireless systems, signal processing"
-  [[params.aboutCards]]
-    icon = "🌌"; title = "Astrophysics"; desc = "Fascinated by the physics behind what I photograph"
+  description = "I build circuits, shoot photos, and write about ideas."
+  tagline     = "Exploring circuits, light & ideas."
+  githubURL   = "https://github.com/skyrim55"
+  email       = "riteshpradhan55@example.com"
+  heroLine1   = "Hey, I'm"
+  heroName    = "Ritesh Pradhan"
+  heroBadge   = "Currently learning & building"
 
 [[menu.main]]
-  name = "Home";        url = "/";            weight = 1
+  name   = "Home"
+  url    = "/"
+  weight = 1
+
 [[menu.main]]
-  name = "Electronics"; url = "/electronics/"; weight = 2
+  name   = "Electronics"
+  url    = "/electronics/"
+  weight = 2
+
 [[menu.main]]
-  name = "Photography"; url = "/photography/"; weight = 3
+  name   = "Photography"
+  url    = "/photography/"
+  weight = 3
+
 [[menu.main]]
-  name = "Thoughts";    url = "/thoughts/";    weight = 4
+  name   = "Thoughts"
+  url    = "/thoughts/"
+  weight = 4
+
 [[menu.main]]
-  name = "CV";          url = "/cv/";          weight = 5
+  name   = "CV"
+  url    = "/cv/"
+  weight = 5
 
 [markup.goldmark.renderer]
   unsafe = true
