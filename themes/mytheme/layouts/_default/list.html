@@ -22,7 +22,9 @@
         <p class="card-exc">{{ .Summary | truncate 120 }}</p>
         <div class="card-foot">
           <div class="card-tags">
-            {{ range first 3 .Params.tags }}<a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>{{ end }}
+            {{ if .Params.tags }}
+              {{ range first 3 .Params.tags }}<a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>{{ end }}
+            {{ end }}
           </div>
           <a href="{{ .RelPermalink }}" class="read-more">Read &#8594;</a>
         </div>

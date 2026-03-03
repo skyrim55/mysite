@@ -1,153 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content=""/>
   <title>Categories · Skyrim</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/main.css"/>
   
 </head>
-<body class="theme-dark">
-
-  
-  <div class="bg-grid" aria-hidden="true"></div>
-
-  <header class="site-header">
+<body>
+    <header class="site-header">
   <div class="container">
-
     <a href="/" class="logo">
-      <span class="logo-icon">🔥</span>
+      <span class="logo-icon">&#128293;</span>
       <span class="logo-text">Skyrim</span>
     </a>
-
     <nav class="site-nav" id="siteNav">
       <ul>
         
         <li>
-          <a href="/"
-             >
-            Home
-          </a>
+          <a href="/">Home</a>
         </li>
         
         <li>
-          <a href="/electronics/"
-             >
-            Electronics
-          </a>
+          <a href="/electronics/">Electronics</a>
         </li>
         
         <li>
-          <a href="/photography/"
-             >
-            Photography
-          </a>
+          <a href="/photography/">Photography</a>
         </li>
         
         <li>
-          <a href="/thoughts/"
-             >
-            Thoughts
-          </a>
+          <a href="/thoughts/">Thoughts</a>
         </li>
         
         <li>
-          <a href="/cv/"
-             >
-            CV
-          </a>
+          <a href="/cv/">CV</a>
         </li>
         
       </ul>
     </nav>
-
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
+    <button class="nav-toggle" onclick="document.getElementById('siteNav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
     </button>
-
   </div>
 </header>
 
-<script>
-function toggleNav() {
-  document.getElementById('siteNav').classList.toggle('open');
-}
 
-document.addEventListener('click', function(e) {
-  const nav = document.getElementById('siteNav');
-  const btn = document.querySelector('.nav-toggle');
-  if (!nav.contains(e.target) && !btn.contains(e.target)) {
-    nav.classList.remove('open');
-  }
-});
-</script>
-
-
-  <main class="main-content" id="main">
+  <main id="main">
     
-
-
-
-
-<section class="page-hero">
+<div class="page-hero">
   <div class="container">
-    <div class="page-hero-content">
-      <div class="page-icon">📝</div>
-      <h1>Categories</h1>
-      
-    </div>
+    <h1>Categories</h1>
+    
   </div>
-</section>
-
-<section class="posts-section">
-  <div class="container">
-
+</div>
+<div class="container post-list">
+  <div class="posts-section-grid">
     
-    
-
-    <div class="posts-grid">
-      
-    </div>
-
-    
-    
-
   </div>
-</section>
-
+  
+</div>
 
   </main>
-
-  <footer class="site-footer">
+    <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
-
-      <p class="footer-copy">
-        © 2026 <strong>Ritesh Pradhan</strong>
-      </p>
-
+      <p class="footer-copy">&#169; 2026 <strong>Ritesh Pradhan</strong> &middot; Built with Hugo &#9749;</p>
       <div class="footer-links">
         
-        <a href="https://github.com/skyrim55" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
         
         <a href="/cv/">CV</a>
       </div>
-
     </div>
   </div>
 </footer>
 
 
   <script src="/js/main.js"></script>
+  
 </body>
 </html>
