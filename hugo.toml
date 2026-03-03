@@ -1,0 +1,71 @@
+baseURL      = "https://YOUR-SITE-NAME.netlify.app/"
+languageCode = "en-us"
+title        = "Skyrim"
+theme        = "mytheme"
+paginate     = 9
+
+canonifyURLs = false
+relativeURLs = false
+
+[params]
+  author      = "Ritesh Pradhan"
+  description = "Electrical Engineer and Astro Photographer"
+  githubURL   = "https://github.com/yourusername"
+  heroName    = "Ritesh"
+  heroSurname = "Pradhan"
+  heroWord1   = "circuits"
+  heroWord2   = "stars"
+  aboutLine1  = "I am an electrical engineer who builds circuits and PCBs."
+  aboutLine2  = "When I step away from the workbench I chase galaxies with my camera."
+
+[[params.aboutCards]]
+  icon  = "bolt"
+  title = "Electronics"
+  desc  = "Arduino, ESP32, PCB design, RF and embedded systems"
+
+[[params.aboutCards]]
+  icon  = "telescope"
+  title = "Astro Photography"
+  desc  = "Deep sky, Milky Way, long exposure, image stacking"
+
+[[params.aboutCards]]
+  icon  = "signal"
+  title = "RF and Signals"
+  desc  = "Antenna design, SDR, wireless systems, signal processing"
+
+[[params.aboutCards]]
+  icon  = "galaxy"
+  title = "Astrophysics"
+  desc  = "Fascinated by the physics behind what I photograph"
+
+[[menu.main]]
+  name   = "Home"
+  url    = "/"
+  weight = 1
+
+[[menu.main]]
+  name   = "Electronics"
+  url    = "/electronics/"
+  weight = 2
+
+[[menu.main]]
+  name   = "Photography"
+  url    = "/photography/"
+  weight = 3
+
+[[menu.main]]
+  name   = "Thoughts"
+  url    = "/thoughts/"
+  weight = 4
+
+[[menu.main]]
+  name   = "CV"
+  url    = "/cv/"
+  weight = 5
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  style   = "monokai"
+  lineNos = true
