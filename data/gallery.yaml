@@ -1,0 +1,62 @@
+# ─────────────────────────────────────────────
+# data/gallery.yaml  — Your Astro Photo Gallery
+# ─────────────────────────────────────────────
+# Add your own photos by replacing the src URLs
+# Use relative paths like /images/photos/my-shot.jpg
+# after copying images to static/images/photos/
+# Or use full URLs from any image host
+
+categories:
+  - name: Deep Sky
+    slug: deepsky
+  - name: Milky Way
+    slug: milkyway
+  - name: Planets
+    slug: planets
+  - name: Landscapes
+    slug: landscapes
+
+photos:
+  - src: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800&q=85"
+    label: "Milky Way Core"
+    category: "milkyway"
+
+  - src: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=85"
+    label: "Nebula Field"
+    category: "deepsky"
+
+  - src: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&q=85"
+    label: "Star Trails"
+    category: "milkyway"
+
+  - src: "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800&q=85"
+    label: "Galaxy Cluster"
+    category: "deepsky"
+
+  - src: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=85"
+    label: "Moon Surface"
+    category: "planets"
+
+  - src: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=800&q=85"
+    label: "Andromeda Galaxy"
+    category: "deepsky"
+
+  - src: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&q=85"
+    label: "Mountain Astroscape"
+    category: "landscapes"
+
+  - src: "https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800&q=85"
+    label: "Deep Sky Object"
+    category: "deepsky"
+
+  - src: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=85"
+    label: "Night Sky Wide"
+    category: "milkyway"
+
+  - src: "https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=800&q=85"
+    label: "Nebula Colors"
+    category: "deepsky"
+
+# To add YOUR own photos:
+# 1. Copy image file to mysite/static/images/photos/your-image.jpg
+# 2. Add entry:  src: "/images/photos/your-image.jpg"

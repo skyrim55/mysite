@@ -1,121 +1,70 @@
 {{ define "main" }}
+<canvas id="cv"></canvas>
 
-<!-- Background layers -->
-<div class="bg-grid"></div>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-
-<!-- ═══════════════════════════════════
-     HERO
-════════════════════════════════════ -->
-<section class="hero">
-  <div class="container">
-
-    <div class="hero-badge">
-      <span class="pulse-dot"></span>
-      Currently learning &amp; building
-    </div>
-
-    <h1 class="hero-title">
-      Hey, I'm<br>
-      <span class="highlight">Ritesh Pradhan</span>
-    </h1>
-
-    <p class="hero-tagline">Exploring circuits, light &amp; ideas.</p>
-    <p style="color:var(--text2);font-size:.95rem;max-width:520px;">
-      I build electronics projects, shoot photography, and write about what I learn along the way.
-      This is my personal learning journal.
-    </p>
-
-    <div class="hero-actions">
-      <a href="/cv/" class="btn btn-primary">View CV →</a>
-      <a href="/electronics/" class="btn btn-ghost">See My Projects</a>
-    </div>
-
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+  <div class="eye">Electrical Engineer &nbsp;·&nbsp; Astro Photographer</div>
+  <h1>
+    <span class="gr">{{ .Site.Params.heroName | default "Ritesh" }}</span><br>
+    <span class="gr">{{ .Site.Params.heroSurname | default "Pradhan" }}</span>
+  </h1>
+  <p class="sub">{{ .Site.Params.heroLine1 | default "I design" }} <b>{{ .Site.Params.heroWord1 | default "circuits" }}</b> by day and chase <b>{{ .Site.Params.heroWord2 | default "stars" }}</b> by night.</p>
+  <div class="scr">
+    <p>Scroll</p>
+    <div class="sarr"><div class="sdot"></div></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SECTION NAV CARDS
-════════════════════════════════════ -->
-<section class="section-nav">
-  <div class="container">
-    <div class="section-cards">
-
-      <a href="/electronics/" class="section-card">
-        <div class="section-icon">⚡</div>
-        <div class="section-info">
-          <h3>Electronics</h3>
-          <p>Circuits, Arduino, PCB projects</p>
-        </div>
-        <span class="section-arrow">→</span>
-      </a>
-
-      <a href="/photography/" class="section-card">
-        <div class="section-icon">📷</div>
-        <div class="section-info">
-          <h3>Photography</h3>
-          <p>Shoots, settings, editing notes</p>
-        </div>
-        <span class="section-arrow">→</span>
-      </a>
-
-      <a href="/thoughts/" class="section-card">
-        <div class="section-icon">💭</div>
-        <div class="section-info">
-          <h3>Thoughts</h3>
-          <p>Ideas, reflections, essays</p>
-        </div>
-        <span class="section-arrow">→</span>
-      </a>
-
+<!-- ─── ABOUT ─── -->
+<div class="pg-content">
+  <section class="sec" id="about">
+    <h2>About Me</h2>
+    <div class="dl"></div>
+    <p>{{ .Site.Params.aboutLine1 | default "I am an electrical engineer who builds circuits, designs PCBs, and dives deep into RF and embedded systems." }}</p>
+    <p>{{ .Site.Params.aboutLine2 | default "When I step away from the workbench I am out under dark skies chasing galaxies with my camera. This is my personal space." }}</p>
+    <div class="g2">
+      {{ range .Site.Params.aboutCards }}
+      <div class="ac">
+        <div class="ic">{{ .icon }}</div>
+        <h3>{{ .title }}</h3>
+        <p>{{ .desc }}</p>
+      </div>
+      {{ end }}
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════════════════════════════════
-     LEARNING TRACKER
-════════════════════════════════════ -->
-<section class="progress-section">
-  <div class="container">
+  <!-- Learning progress from data/learning.yaml -->
+  {{ with .Site.Data.learning }}
+  <section class="sec" id="learning">
     <h2>Currently Learning</h2>
-    <p>Live progress — updated as I improve</p>
-
-    <div class="progress-list">
-      {{ range .Site.Data.learning.topics }}
-      <div class="progress-item">
-        <div class="progress-label">
-          <span class="progress-name">{{ .icon }} {{ .name }}</span>
-          <span class="progress-pct">{{ .percent }}%</span>
+    <div class="dl"></div>
+    <p>Live progress tracker — updated as I improve</p>
+    <div class="prog-list">
+      {{ range .topics }}
+      <div class="prog-item">
+        <div class="prog-label">
+          <span class="prog-name">{{ .icon }} {{ .name }}</span>
+          <span class="prog-pct">{{ .percent }}%</span>
         </div>
-        <div class="progress-bar">
-          <div class="progress-fill" data-width="{{ .percent }}%"></div>
+        <div class="prog-bar">
+          <div class="prog-fill" data-w="{{ .percent }}"></div>
         </div>
       </div>
       {{ end }}
     </div>
-  </div>
-</section>
+  </section>
+  {{ end }}
 
-<!-- ═══════════════════════════════════
-     LATEST POSTS — ALL SECTIONS
-════════════════════════════════════ -->
-<section class="latest-posts">
-  <div class="container">
-
-    <div class="section-header">
-      <h2>Latest Posts</h2>
-      <p>Everything I've been working on recently</p>
-    </div>
-
+  <!-- Latest posts -->
+  <section class="sec" id="latest">
+    <h2>Latest Posts</h2>
+    <div class="dl"></div>
     <div class="posts-grid">
       {{ range first 6 .Site.RegularPages.ByDate.Reverse }}
       {{ if not .Params.draft }}
       <article class="post-card">
         {{ if .Params.cover }}
-        <div class="card-image">
-          <img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy"/>
-        </div>
+        <div class="card-img"><img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy"/></div>
         {{ end }}
         <div class="card-body">
           <div class="card-meta">
@@ -123,12 +72,10 @@
             <span class="card-date">{{ .Date.Format "02 Jan 2006" }}</span>
           </div>
           <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          <p class="card-excerpt">{{ .Summary | truncate 120 }}</p>
-          <div class="card-footer">
+          <p class="card-exc">{{ .Summary | truncate 110 }}</p>
+          <div class="card-foot">
             <div class="card-tags">
-              {{ range first 3 .Params.tags }}
-              <a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>
-              {{ end }}
+              {{ range first 3 .Params.tags }}<a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>{{ end }}
             </div>
             <a href="{{ .RelPermalink }}" class="read-more">Read →</a>
           </div>
@@ -137,37 +84,123 @@
       {{ end }}
       {{ end }}
     </div>
+  </section>
+</div>
 
+<!-- ─── DOCK ─── -->
+<div class="dw" id="dw">
+  <div class="dock" id="dock">
+    <div class="di" onclick="goTop()"><div class="dlbl">Home</div><div class="dico">&#127968;</div><div class="ddot"></div></div>
+    <div class="dsep"></div>
+    <div class="di" id="dg" onclick="openM('g')"><div class="dlbl">Gallery</div><div class="dico">&#128248;</div><div class="ddot"></div></div>
+    <div class="di" id="dn" onclick="openM('n')"><div class="dlbl">Notes</div><div class="dico">&#128221;</div><div class="ddot"></div></div>
+    <div class="dsep"></div>
+    <div class="di" onclick="location='/electronics/'"><div class="dlbl">Electronics</div><div class="dico">&#9889;</div><div class="ddot"></div></div>
+    <div class="di" onclick="location='/photography/'"><div class="dlbl">Photography</div><div class="dico">&#128247;</div><div class="ddot"></div></div>
+    <div class="di" onclick="location='/cv/'"><div class="dlbl">CV</div><div class="dico">&#128100;</div><div class="ddot"></div></div>
   </div>
-</section>
+</div>
 
-<!-- Scroll reveal + progress bar animation -->
+<!-- ─── GALLERY MODAL ─── -->
+<div class="ov" id="gm" onclick="bdC(event,'g')">
+  <div class="mw" onclick="event.stopPropagation()">
+    <div class="mtb">
+      <div class="tds"><span class="dr" onclick="closeM('g')"></span><span class="dy"></span><span class="dg2"></span></div>
+      <div class="mtt">&#128248; Astro Gallery &mdash; {{ .Site.Params.author | default "Ritesh Pradhan" }}</div>
+    </div>
+    <div class="gtb">
+      <button class="gt on" onclick="gF('all',this)">All</button>
+      {{ range .Site.Data.gallery.categories }}
+      <button class="gt" onclick="gF('{{ .slug }}',this)">{{ .name }}</button>
+      {{ end }}
+      <input class="gsi" placeholder="Search photos..." oninput="gS(this.value)"/>
+    </div>
+    <div class="gsc"><div class="gg" id="gg"></div></div>
+  </div>
+</div>
+
+<!-- ─── LIGHTBOX ─── -->
+<div class="lb" id="lb">
+  <button class="lbcl" onclick="cLB()">&#x2715;</button>
+  <button class="lbn lbp" onclick="nLB(-1)">&#8249;</button>
+  <img class="lbi" id="lbi" src="" alt=""/>
+  <button class="lbn lbnx" onclick="nLB(1)">&#8250;</button>
+  <div class="lbc" id="lbc"></div>
+</div>
+
+<!-- ─── NOTES MODAL ─── -->
+<div class="ov" id="nm" onclick="bdC(event,'n')">
+  <div class="mw" onclick="event.stopPropagation()">
+    <div class="mtb">
+      <div class="tds"><span class="dr" onclick="closeM('n')"></span><span class="dy"></span><span class="dg2"></span></div>
+      <div class="mtt">&#128221; Notes &amp; Thoughts &mdash; {{ .Site.Params.author | default "Ritesh Pradhan" }}</div>
+    </div>
+    <div class="nlayout">
+      <div class="ns">
+        <div class="nn on" onclick="nFl('all',this)"><span>&#128203;</span> All Notes</div>
+        <div class="nn" onclick="nFl('thoughts',this)"><span>&#128173;</span> Thoughts</div>
+        <div class="nn" onclick="nFl('electronics',this)"><span>&#9889;</span> Electronics</div>
+        <div class="nn" onclick="nFl('astro',this)"><span>&#127756;</span> Astro</div>
+      </div>
+      <div class="nm2">
+        <div id="nlw">
+          <div class="nh"><h3 id="ntt">All Notes</h3><p id="nct">Loading...</p></div>
+          <div class="nls" id="nll"></div>
+        </div>
+        <div class="rd" id="rd">
+          <div class="rh">
+            <button class="bb" onclick="cRd()">&#8592; Back</button>
+            <span id="rs" style="font-size:.82rem;font-weight:600;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;"></span>
+          </div>
+          <div class="rb" id="rb"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── HUGO DATA → JS ─── -->
 <script>
-(function(){
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
+/* Inject Hugo gallery data into JS */
+var PHOTOS = [
+  {{ range .Site.Data.gallery.photos }}
+  {s:"{{ .src }}",l:"{{ .label }}",c:"{{ .category }}"},
+  {{ end }}
+];
 
-  document.querySelectorAll('.post-card, .section-card').forEach(el => obs.observe(el));
-
-  // Progress bars animate on scroll
-  const progObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.progress-fill').forEach(bar => {
-          bar.style.width = bar.dataset.width;
-        });
-        progObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const progressSection = document.querySelector('.progress-section');
-  if (progressSection) progObs.observe(progressSection);
-})();
+/* Inject Hugo thoughts posts into JS */
+var NOTES = [
+  {{ range where .Site.RegularPages "Section" "thoughts" }}
+  {{ if not .Params.draft }}
+  {
+    id:{{ .Date.Unix }},
+    cat:"{{ .Params.category | default "thoughts" }}",
+    date:"{{ .Date.Format "02 Jan 2006" }}",
+    title:{{ .Title | jsonify }},
+    prev:{{ .Summary | truncate 140 | jsonify }},
+    tags:[{{ range .Params.tags }}"{{ . }}",{{ end }}],
+    url:"{{ .RelPermalink }}"
+  },
+  {{ end }}
+  {{ end }}
+  /* Electronics posts */
+  {{ range where .Site.RegularPages "Section" "electronics" }}
+  {{ if not .Params.draft }}
+  {
+    id:{{ .Date.Unix }},
+    cat:"electronics",
+    date:"{{ .Date.Format "02 Jan 2006" }}",
+    title:{{ .Title | jsonify }},
+    prev:{{ .Summary | truncate 140 | jsonify }},
+    tags:[{{ range .Params.tags }}"{{ . }}",{{ end }}],
+    url:"{{ .RelPermalink }}"
+  },
+  {{ end }}
+  {{ end }}
+];
 </script>
+{{ end }}
 
+{{ define "scripts" }}
+<script src="/js/homepage.js"></script>
 {{ end }}

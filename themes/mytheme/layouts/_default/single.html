@@ -1,87 +1,34 @@
 {{ define "main" }}
-
-{{ $icons := dict "electronics" "⚡" "photography" "📷" "thoughts" "💭" }}
-{{ $icon := index $icons .Section | default "📝" }}
-
-<article class="single-post">
-
-  <!-- Post Header -->
-  <header class="post-header">
-    {{ if .Params.cover }}
-    <div class="post-cover">
-      <img src="{{ .Params.cover }}" alt="{{ .Title }}" />
+<div class="container">
+  <div class="post-header">
+    <p class="post-breadcrumb">
+      <a href="/">Home</a> &#8250; <a href="/{{ .Section }}/">{{ .Section | title }}</a> &#8250; {{ .Title }}
+    </p>
+    <h1 class="post-title">{{ .Title }}</h1>
+    <div class="post-meta">
+      <span>{{ .Date.Format "02 January 2006" }}</span>
+      {{ with .Params.readingTime }}<span>{{ . }} min read</span>{{ end }}
+      {{ range .Params.tags }}<a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>{{ end }}
     </div>
-    {{ end }}
-    <div class="container">
-      <div class="post-breadcrumb">
-        <a href="/">Home</a> /
-        <a href="/{{ .Section }}/">{{ $icon }} {{ .Section | title }}</a>
-      </div>
-      <h1 class="post-title">{{ .Title }}</h1>
-      {{ with .Params.subtitle }}<p class="post-subtitle">{{ . }}</p>{{ end }}
-      <div class="post-meta">
-        <span>📅 {{ .Date.Format "January 2, 2006" }}</span>
-        <span>⏱ {{ .ReadingTime }} min read</span>
-        {{ if .Params.difficulty }}
-        <span class="difficulty diff-{{ .Params.difficulty }}">{{ .Params.difficulty | title }}</span>
-        {{ end }}
-      </div>
-      {{ if .Params.tags }}
-      <div class="post-tags">
-        {{ range .Params.tags }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}
-      </div>
-      {{ end }}
-    </div>
-  </header>
-
-  <!-- Table of Contents -->
-  {{ if .TableOfContents }}
-  <div class="container">
-    <aside class="toc-wrapper">
-      <button class="toc-toggle" id="tocToggle">📋 Table of Contents</button>
-      <div class="toc-content" id="tocContent">
-        {{ .TableOfContents }}
-      </div>
-    </aside>
   </div>
-  {{ end }}
-
-  <!-- Post Body -->
   <div class="post-body">
-    <div class="container">
-      <div class="post-content">
-        {{ .Content }}
-      </div>
+    <div class="post-content">{{ .Content }}</div>
+  </div>
+  <div class="post-footer">
+    <div class="post-nav">
+      {{ with .PrevInSection }}
+      <a class="post-nav-link" href="{{ .RelPermalink }}">
+        <span style="font-size:.72rem;color:var(--text3);font-family:var(--fm);">&#8592; Previous</span>
+        <span style="font-weight:600;font-size:.92rem;">{{ .Title }}</span>
+      </a>
+      {{ end }}
+      {{ with .NextInSection }}
+      <a class="post-nav-link" href="{{ .RelPermalink }}" style="text-align:right;margin-left:auto;">
+        <span style="font-size:.72rem;color:var(--text3);font-family:var(--fm);">Next &#8594;</span>
+        <span style="font-weight:600;font-size:.92rem;">{{ .Title }}</span>
+      </a>
+      {{ end }}
     </div>
   </div>
-
-  <!-- Post Footer -->
-  <footer class="post-footer">
-    <div class="container">
-      {{ if .Params.tags }}
-      <div class="post-tags-footer">
-        <strong>Tagged:</strong>
-        {{ range .Params.tags }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}
-      </div>
-      {{ end }}
-
-      <!-- Prev/Next -->
-      <nav class="post-nav">
-        {{ with .PrevInSection }}
-        <a href="{{ .RelPermalink }}" class="post-nav-link prev">
-          <span class="nav-label">← Previous</span>
-          <span class="nav-title">{{ .Title }}</span>
-        </a>
-        {{ end }}
-        {{ with .NextInSection }}
-        <a href="{{ .RelPermalink }}" class="post-nav-link next">
-          <span class="nav-label">Next →</span>
-          <span class="nav-title">{{ .Title }}</span>
-        </a>
-        {{ end }}
-      </nav>
-    </div>
-  </footer>
-
-</article>
+</div>
 {{ end }}

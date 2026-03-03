@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary }}{{ end }}" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary }}{{ end }}"/>
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/main.css" />
-  {{ if .Params.math }}<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>{{ end }}
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/main.css"/>
+  {{ block "head" . }}{{ end }}
 </head>
-<body class="theme-dark">
+<body>
 
-  <!-- Animated background particles -->
-  <div class="bg-grid" aria-hidden="true"></div>
+  {{- if not .IsHome }}
+    {{ partial "header.html" . }}
+  {{- end }}
 
-  {{ partial "header.html" . }}
-
-  <main class="main-content" id="main">
+  <main id="main">
     {{ block "main" . }}{{ end }}
   </main>
 
-  {{ partial "footer.html" . }}
+  {{- if not .IsHome }}
+    {{ partial "footer.html" . }}
+  {{- end }}
 
   <script src="/js/main.js"></script>
+  {{ block "scripts" . }}{{ end }}
 </body>
 </html>

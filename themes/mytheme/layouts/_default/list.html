@@ -1,51 +1,36 @@
 {{ define "main" }}
-
-{{ $icons := dict "electronics" "⚡" "photography" "📷" "thoughts" "💭" }}
-{{ $icon := index $icons .Section | default "📝" }}
-
-<section class="page-hero">
+<div class="page-hero">
   <div class="container">
-    <div class="page-hero-content">
-      <div class="page-icon">{{ $icon }}</div>
-      <h1>{{ .Title }}</h1>
-      {{ with .Content }}<div class="page-desc">{{ . }}</div>{{ end }}
-    </div>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<p>{{ . }}</p>{{ end }}
   </div>
-</section>
-
-<section class="posts-section">
-  <div class="container">
-
-    <!-- Filter bar -->
-    {{ if .Params.tags }}
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">All</button>
-      {{ range .Params.tags }}
-      <button class="filter-btn" data-filter="{{ . | urlize }}">{{ . }}</button>
+</div>
+<div class="container post-list">
+  <div class="posts-section-grid">
+    {{ range .Pages }}
+    {{ if not .Params.draft }}
+    <article class="post-card">
+      {{ if .Params.cover }}
+      <div class="card-img"><img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy"/></div>
       {{ end }}
-    </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-section">{{ .Section }}</span>
+          <span class="card-date">{{ .Date.Format "02 Jan 2006" }}</span>
+        </div>
+        <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="card-exc">{{ .Summary | truncate 120 }}</p>
+        <div class="card-foot">
+          <div class="card-tags">
+            {{ range first 3 .Params.tags }}<a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>{{ end }}
+          </div>
+          <a href="{{ .RelPermalink }}" class="read-more">Read &#8594;</a>
+        </div>
+      </div>
+    </article>
     {{ end }}
-
-    <div class="posts-grid">
-      {{ range .Paginator.Pages }}
-        {{ partial "card.html" . }}
-      {{ end }}
-    </div>
-
-    <!-- Pagination -->
-    {{ if gt .Paginator.TotalPages 1 }}
-    <nav class="pagination" aria-label="Pagination">
-      {{ if .Paginator.HasPrev }}
-      <a href="{{ .Paginator.Prev.URL }}" class="pag-btn">← Newer</a>
-      {{ end }}
-      <span class="pag-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
-      {{ if .Paginator.HasNext }}
-      <a href="{{ .Paginator.Next.URL }}" class="pag-btn">Older →</a>
-      {{ end }}
-    </nav>
     {{ end }}
-
   </div>
-</section>
-
+  {{ template "_internal/pagination.html" . }}
+</div>
 {{ end }}

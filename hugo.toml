@@ -6,13 +6,42 @@ paginate     = 9
 
 [params]
   author      = "Ritesh Pradhan"
-  description = "I build circuits, shoot photos, and write about ideas."
+  description = "Electrical Engineer & Astro Photographer — circuits by day, stars by night."
   tagline     = "Exploring circuits, light & ideas."
-  githubURL   = "https://github.com/skyrim55"
-  email       = "riteshpradhan55@example.com"
-  heroLine1   = "Hey, I'm"
-  heroName    = "Ritesh Pradhan"
-  heroBadge   = "Currently learning & building"
+  githubURL   = "https://github.com/yourusername"
+  email       = "ritesh@example.com"
+
+  # Hero section
+  heroName    = "Ritesh"
+  heroSurname = "Pradhan"
+  heroLine1   = "I design"
+  heroWord1   = "circuits"
+  heroWord2   = "stars"
+
+  # About section text
+  aboutLine1  = "I am an electrical engineer who builds circuits, designs PCBs, and dives deep into RF and embedded systems."
+  aboutLine2  = "When I step away from the workbench I am out under dark skies chasing galaxies with my camera. This is my personal space."
+
+  # About cards — edit icons and text freely
+  [[params.aboutCards]]
+    icon  = "⚡"
+    title = "Electronics"
+    desc  = "Arduino, ESP32, PCB design, RF & embedded systems"
+
+  [[params.aboutCards]]
+    icon  = "🔭"
+    title = "Astro Photography"
+    desc  = "Deep sky objects, Milky Way, long exposure, stacking"
+
+  [[params.aboutCards]]
+    icon  = "📡"
+    title = "RF & Signals"
+    desc  = "Antenna design, SDR, signal processing, wireless"
+
+  [[params.aboutCards]]
+    icon  = "🌌"
+    title = "Astrophysics"
+    desc  = "Fascinated by the physics behind what I photograph"
 
 [[menu.main]]
   name   = "Home"
