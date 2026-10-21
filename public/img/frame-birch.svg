@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="cold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6eadf"/><stop offset="1" stop-color="#d4dccc"/>
+    </linearGradient>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f6f4ec"/><stop offset=".6" stop-color="#dbe0d0"/><stop offset="1" stop-color="#c2cbb4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#cold)"/>
+  <rect x="90" y="0" width="64" height="600" fill="url(#trunk)"/>
+  <rect x="240" y="0" width="46" height="600" fill="url(#trunk)" opacity=".9"/>
+  <rect x="420" y="0" width="74" height="600" fill="url(#trunk)"/>
+  <rect x="590" y="0" width="40" height="600" fill="url(#trunk)" opacity=".9"/>
+  <rect x="680" y="0" width="56" height="600" fill="url(#trunk)" opacity=".7"/>
+  <ellipse cx="122" cy="520" rx="60" ry="14" fill="#2f3b33" opacity=".25"/>
+  <ellipse cx="457" cy="560" rx="80" ry="16" fill="#2f3b33" opacity=".25"/>
+  <path d="M122 0 C122 90 90 120 90 180 M122 0 C122 90 160 130 160 210" stroke="#2f3b33" stroke-width="8" stroke-linecap="round" fill="none" opacity=".4"/>
+  <rect width="800" height="600" fill="#f4efe4" opacity=".06"/>
+</svg>

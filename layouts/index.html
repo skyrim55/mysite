@@ -1,0 +1,281 @@
+﻿{{ define "main" }}
+    <section class="hero-wrap">
+  <div class="hero-traces" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow" data-reveal>Embedded systems · soldering since 2011</p>
+      <h1 class="hero-title">
+        <span class="line" data-reveal style="--d:.05s">I solder ideas</span>
+        <span class="line" data-reveal style="--d:.15s">onto <em>silicon</em>.</span>
+      </h1>
+      <p class="hero-sub" data-reveal style="--d:.25s">
+        Microcontroller builds, firmware experiments and bench notes — from the
+        first blinking LED to boards that talk over I²C, SPI and UART.
+      </p>
+      <div class="hero-actions" data-reveal style="--d:.35s">
+        <a class="btn btn-solid" href="/projects/">See the builds</a>
+        <a class="btn btn-ghost" href="/knowledge/">Read the notebook</a>
+      </div>
+
+      <div class="term" data-reveal style="--d:.45s" aria-hidden="true">
+        <div class="term-bar">
+          <span></span><span></span><span></span>
+          <em>ttyUSB0 — 115200 8N1</em>
+        </div>
+        <pre class="term-body" id="term"></pre>
+        <div id="term-source" hidden>
+          <div>$ make flash</div>
+          <div>avr-gcc -Os -mmcu=atmega328p -o main.elf main.c</div>
+          <div>avrdude -c usbasp -p m328p -U flash:w:main.hex</div>
+          <div>### flashing ▓▓▓▓▓▓▓▓▓▓░░  87%</div>
+          <div>[ ok ] 1024 bytes written · 0 errors · 0.42s</div>
+          <div>&gt; hello, world — now let's blink something.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-board" data-reveal style="--d:.2s">
+      <div class="board-stage" id="board-stage">
+        <svg class="board" viewBox="0 0 600 600" role="img" aria-label="An interactive microcontroller development board">
+          <defs>
+            <linearGradient id="pcb" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--pcb-hi)"/>
+              <stop offset="1" stop-color="var(--pcb)"/>
+            </linearGradient>
+            <linearGradient id="die" x1="0" y1="0" x2="0.6" y2="1">
+              <stop offset="0" stop-color="#39434d"/>
+              <stop offset="1" stop-color="#20262c"/>
+            </linearGradient>
+          </defs>
+
+          <rect class="board-pcb" x="40" y="40" width="520" height="520" rx="26" fill="url(#pcb)"/>
+
+          <g class="vias" aria-hidden="true"><circle class="via" cx="96" cy="96" r="2.2"/><circle class="via" cx="96" cy="164" r="2.2"/><circle class="via" cx="96" cy="232" r="2.2"/><circle class="via" cx="96" cy="300" r="2.2"/><circle class="via" cx="96" cy="368" r="2.2"/><circle class="via" cx="96" cy="436" r="2.2"/><circle class="via" cx="96" cy="504" r="2.2"/><circle class="via" cx="164" cy="96" r="2.2"/><circle class="via" cx="164" cy="164" r="2.2"/><circle class="via" cx="164" cy="232" r="2.2"/><circle class="via" cx="164" cy="300" r="2.2"/><circle class="via" cx="164" cy="368" r="2.2"/><circle class="via" cx="164" cy="436" r="2.2"/><circle class="via" cx="164" cy="504" r="2.2"/><circle class="via" cx="232" cy="96" r="2.2"/><circle class="via" cx="232" cy="164" r="2.2"/><circle class="via" cx="232" cy="232" r="2.2"/><circle class="via" cx="232" cy="300" r="2.2"/><circle class="via" cx="232" cy="368" r="2.2"/><circle class="via" cx="232" cy="436" r="2.2"/><circle class="via" cx="232" cy="504" r="2.2"/><circle class="via" cx="300" cy="96" r="2.2"/><circle class="via" cx="300" cy="164" r="2.2"/><circle class="via" cx="300" cy="232" r="2.2"/><circle class="via" cx="300" cy="300" r="2.2"/><circle class="via" cx="300" cy="368" r="2.2"/><circle class="via" cx="300" cy="436" r="2.2"/><circle class="via" cx="300" cy="504" r="2.2"/><circle class="via" cx="368" cy="96" r="2.2"/><circle class="via" cx="368" cy="164" r="2.2"/><circle class="via" cx="368" cy="232" r="2.2"/><circle class="via" cx="368" cy="300" r="2.2"/><circle class="via" cx="368" cy="368" r="2.2"/><circle class="via" cx="368" cy="436" r="2.2"/><circle class="via" cx="368" cy="504" r="2.2"/><circle class="via" cx="436" cy="96" r="2.2"/><circle class="via" cx="436" cy="164" r="2.2"/><circle class="via" cx="436" cy="232" r="2.2"/><circle class="via" cx="436" cy="300" r="2.2"/><circle class="via" cx="436" cy="368" r="2.2"/><circle class="via" cx="436" cy="436" r="2.2"/><circle class="via" cx="436" cy="504" r="2.2"/><circle class="via" cx="504" cy="96" r="2.2"/><circle class="via" cx="504" cy="164" r="2.2"/><circle class="via" cx="504" cy="232" r="2.2"/><circle class="via" cx="504" cy="300" r="2.2"/><circle class="via" cx="504" cy="368" r="2.2"/><circle class="via" cx="504" cy="436" r="2.2"/><circle class="via" cx="504" cy="504" r="2.2"/></g>
+
+          <g class="board-nets">
+            <g class="net" data-label="3V3 · power rail" tabindex="0" role="button" aria-label="3V3 · power rail">
+              <path class="trace" d="M92 140 H168 V262 H230"/>
+              <path class="sig" d="M92 140 H168 V262 H230" style="animation-delay:0s"/>
+              <circle class="pad" cx="92" cy="140" r="8"/>
+              <circle class="pad-hole" cx="92" cy="140" r="3.4"/>
+              <text class="pin-num" x="92" y="167">1</text>
+            </g>
+            <g class="net" data-label="GND · ground" tabindex="0" role="button" aria-label="GND · ground">
+              <path class="trace" d="M92 225 H168 V281 H230"/>
+              <path class="sig" d="M92 225 H168 V281 H230" style="animation-delay:0.32s"/>
+              <circle class="pad" cx="92" cy="225" r="8"/>
+              <circle class="pad-hole" cx="92" cy="225" r="3.4"/>
+              <text class="pin-num" x="92" y="252">2</text>
+            </g>
+            <g class="net" data-label="A0 · analog in" tabindex="0" role="button" aria-label="A0 · analog in">
+              <path class="trace" d="M92 310 H168 V300 H230"/>
+              <path class="sig" d="M92 310 H168 V300 H230" style="animation-delay:0.64s"/>
+              <circle class="pad" cx="92" cy="310" r="8"/>
+              <circle class="pad-hole" cx="92" cy="310" r="3.4"/>
+              <text class="pin-num" x="92" y="337">3</text>
+            </g>
+            <g class="net" data-label="A4 / SDA · I²C data" tabindex="0" role="button" aria-label="A4 / SDA · I²C data">
+              <path class="trace" d="M92 395 H168 V319 H230"/>
+              <path class="sig" d="M92 395 H168 V319 H230" style="animation-delay:0.96s"/>
+              <circle class="pad" cx="92" cy="395" r="8"/>
+              <circle class="pad-hole" cx="92" cy="395" r="3.4"/>
+              <text class="pin-num" x="92" y="422">4</text>
+            </g>
+            <g class="net" data-label="A5 / SCL · I²C clock" tabindex="0" role="button" aria-label="A5 / SCL · I²C clock">
+              <path class="trace" d="M92 480 H168 V338 H230"/>
+              <path class="sig" d="M92 480 H168 V338 H230" style="animation-delay:1.28s"/>
+              <circle class="pad" cx="92" cy="480" r="8"/>
+              <circle class="pad-hole" cx="92" cy="480" r="3.4"/>
+              <text class="pin-num" x="92" y="507">5</text>
+            </g>
+            <g class="net" data-label="D13 / SCK · SPI clock" tabindex="0" role="button" aria-label="D13 / SCK · SPI clock">
+              <path class="trace" d="M508 140 H432 V262 H352"/>
+              <path class="sig" d="M508 140 H432 V262 H352" style="animation-delay:0.16s"/>
+              <circle class="pad" cx="508" cy="140" r="8"/>
+              <circle class="pad-hole" cx="508" cy="140" r="3.4"/>
+              <text class="pin-num" x="508" y="167">10</text>
+            </g>
+            <g class="net" data-label="D12 / MISO · SPI in" tabindex="0" role="button" aria-label="D12 / MISO · SPI in">
+              <path class="trace" d="M508 225 H432 V281 H352"/>
+              <path class="sig" d="M508 225 H432 V281 H352" style="animation-delay:0.48s"/>
+              <circle class="pad" cx="508" cy="225" r="8"/>
+              <circle class="pad-hole" cx="508" cy="225" r="3.4"/>
+              <text class="pin-num" x="508" y="252">9</text>
+            </g>
+            <g class="net" data-label="D11 / MOSI · SPI out" tabindex="0" role="button" aria-label="D11 / MOSI · SPI out">
+              <path class="trace" d="M508 310 H432 V300 H352"/>
+              <path class="sig" d="M508 310 H432 V300 H352" style="animation-delay:0.8s"/>
+              <circle class="pad" cx="508" cy="310" r="8"/>
+              <circle class="pad-hole" cx="508" cy="310" r="3.4"/>
+              <text class="pin-num" x="508" y="337">8</text>
+            </g>
+            <g class="net" data-label="D2 · interrupt 0" tabindex="0" role="button" aria-label="D2 · interrupt 0">
+              <path class="trace" d="M508 395 H432 V319 H352"/>
+              <path class="sig" d="M508 395 H432 V319 H352" style="animation-delay:1.1199999999999999s"/>
+              <circle class="pad" cx="508" cy="395" r="8"/>
+              <circle class="pad-hole" cx="508" cy="395" r="3.4"/>
+              <text class="pin-num" x="508" y="422">7</text>
+            </g>
+            <g class="net" data-label="D3 / PWM · pulse out" tabindex="0" role="button" aria-label="D3 / PWM · pulse out">
+              <path class="trace" d="M508 480 H432 V338 H352"/>
+              <path class="sig" d="M508 480 H432 V338 H352" style="animation-delay:1.44s"/>
+              <circle class="pad" cx="508" cy="480" r="8"/>
+              <circle class="pad-hole" cx="508" cy="480" r="3.4"/>
+              <text class="pin-num" x="508" y="507">6</text>
+            </g>
+          </g>
+
+          <g class="board-leds" aria-hidden="true">
+            <circle class="led led-pwr" cx="270" cy="122" r="7"/>
+            <circle class="led led-tx" cx="300" cy="122" r="7"/>
+            <circle class="led led-rx" cx="330" cy="122" r="7"/>
+            <text class="silks" x="270" y="143">PWR</text>
+            <text class="silks" x="300" y="143">TX</text>
+            <text class="silks" x="330" y="143">RX</text>
+          </g>
+
+          <g class="chip">
+            <rect class="chip-body" x="248" y="248" width="104" height="104" rx="9" fill="url(#die)"/>
+            <circle class="chip-notch" cx="263" cy="263" r="5"/>
+            <rect class="chip-pin" x="257" y="230" width="10" height="18" style="--i:0"/>
+            <rect class="chip-pin" x="257" y="352" width="10" height="18" style="--i:5"/>
+            <rect class="chip-pin" x="230" y="257" width="18" height="10" style="--i:10"/>
+            <rect class="chip-pin" x="352" y="257" width="18" height="10" style="--i:15"/>
+            <rect class="chip-pin" x="276" y="230" width="10" height="18" style="--i:1"/>
+            <rect class="chip-pin" x="276" y="352" width="10" height="18" style="--i:6"/>
+            <rect class="chip-pin" x="230" y="276" width="18" height="10" style="--i:11"/>
+            <rect class="chip-pin" x="352" y="276" width="18" height="10" style="--i:16"/>
+            <rect class="chip-pin" x="295" y="230" width="10" height="18" style="--i:2"/>
+            <rect class="chip-pin" x="295" y="352" width="10" height="18" style="--i:7"/>
+            <rect class="chip-pin" x="230" y="295" width="18" height="10" style="--i:12"/>
+            <rect class="chip-pin" x="352" y="295" width="18" height="10" style="--i:17"/>
+            <rect class="chip-pin" x="314" y="230" width="10" height="18" style="--i:3"/>
+            <rect class="chip-pin" x="314" y="352" width="10" height="18" style="--i:8"/>
+            <rect class="chip-pin" x="230" y="314" width="18" height="10" style="--i:13"/>
+            <rect class="chip-pin" x="352" y="314" width="18" height="10" style="--i:18"/>
+            <rect class="chip-pin" x="333" y="230" width="10" height="18" style="--i:4"/>
+            <rect class="chip-pin" x="333" y="352" width="10" height="18" style="--i:9"/>
+            <rect class="chip-pin" x="230" y="333" width="18" height="10" style="--i:14"/>
+            <rect class="chip-pin" x="352" y="333" width="18" height="10" style="--i:19"/>
+            <text class="chip-label" x="300" y="296">ATmega</text>
+            <text class="chip-sub" x="300" y="318">328P · 16MHz</text>
+          </g>
+
+          <g class="board-passives" aria-hidden="true">
+            <rect class="smd" x="150" y="432" width="6" height="16" rx="2"/>
+            <rect class="smd-body" x="156" y="430" width="34" height="12" rx="3"/>
+            <rect class="smd" x="190" y="432" width="6" height="16" rx="2"/>
+            <rect class="smd" x="414" y="432" width="6" height="16" rx="2"/>
+            <rect class="smd-body" x="420" y="430" width="34" height="12" rx="3"/>
+            <rect class="smd" x="454" y="432" width="6" height="16" rx="2"/>
+            <ellipse class="xtal" cx="300" cy="480" rx="22" ry="11"/>
+            <line class="lead" x1="278" y1="480" x2="258" y2="480"/>
+            <line class="lead" x1="322" y1="480" x2="342" y2="480"/>
+            <text class="silks" x="300" y="505">16.000 MHz</text>
+          </g>
+
+          <g class="board-silk" aria-hidden="true">
+            <text class="silks-title" x="300" y="530">SKYDUINO</text>
+            <text class="silks" x="300" y="548">rev 1.0 · 5V logic</text>
+          </g>
+            <circle class="mount" cx="66" cy="66" r="12"/>
+            <circle class="mount-hole" cx="66" cy="66" r="5"/>
+            <circle class="mount" cx="66" cy="534" r="12"/>
+            <circle class="mount-hole" cx="66" cy="534" r="5"/>
+            <circle class="mount" cx="534" cy="66" r="12"/>
+            <circle class="mount-hole" cx="534" cy="66" r="5"/>
+            <circle class="mount" cx="534" cy="534" r="12"/>
+            <circle class="mount-hole" cx="534" cy="534" r="5"/>
+        </svg>
+        <div class="board-tip" id="board-tip" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="board-controls">
+        <button class="pwr" id="pwr-toggle" type="button" aria-pressed="true">
+          <span class="pwr-track"><span class="pwr-knob"></span></span>
+          <span class="pwr-label">Power</span>
+        </button>
+        <span class="board-hint">hover the pins</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap stat-section" data-reveal>
+  <div class="stat-strip">
+    <div class="stat"><p class="stat-k">MCU</p><p class="stat-v">8 / 16 / 32-bit</p></div>
+    <div class="stat"><p class="stat-k">BUS</p><p class="stat-v">I²C · SPI · UART</p></div>
+    <div class="stat"><p class="stat-k">LANG</p><p class="stat-v">C · Rust · µPython</p></div>
+    <div class="stat"><p class="stat-k">BENCH</p><p class="stat-v">Scope · iron · DMM</p></div>
+  </div>
+</section>
+
+<section class="section section-tint" id="bench">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">Bench</p>
+      <h2>Things getting built</h2>
+      <a class="section-more" href="/projects/">All builds →</a>
+    </header>
+    <div class="grid grid-2">
+      {{ range first 4 (where site.RegularPages "Section" "projects") }}{{ partial "card-project.html" . }}
+      {{ end }}
+    </div>
+  </div>
+  </section>
+
+<section class="section wrap" id="parts">
+  <header class="section-head" data-reveal>
+    <p class="eyebrow">Through-hole to SMD</p>
+    <h2>Parts bin</h2>
+  </header>
+  <div class="parts" data-reveal>
+    <figure class="part">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="32" x2="18" y2="32"/><line x1="46" y1="32" x2="60" y2="32"/><rect x="18" y="22" width="28" height="20" rx="4"/><line x1="26" y1="22" x2="26" y2="42"/><line x1="32" y1="22" x2="32" y2="42"/><line x1="38" y1="22" x2="38" y2="42"/></svg>
+      <figcaption><span class="part-name">Resistor</span><span class="part-val">10 kΩ</span></figcaption>
+    </figure>
+    <figure class="part">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="32" x2="24" y2="32"/><line x1="40" y1="32" x2="58" y2="32"/><line x1="24" y1="14" x2="24" y2="50"/><line x1="40" y1="14" x2="40" y2="50"/></svg>
+      <figcaption><span class="part-name">Capacitor</span><span class="part-val">100 µF</span></figcaption>
+    </figure>
+    <figure class="part">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="38" x2="20" y2="38"/><line x1="44" y1="38" x2="60" y2="38"/><path d="M20 22 V54 L44 38 Z" fill="currentColor" fill-opacity=".18"/><line x1="44" y1="22" x2="44" y2="54"/><path d="M30 14 L38 6 M38 6 h-6 M38 6 v6"/><path d="M40 16 L48 8 M48 8 h-6 M48 8 v6"/></svg>
+      <figcaption><span class="part-name">LED</span><span class="part-val">5 mm red</span></figcaption>
+    </figure>
+    <figure class="part">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="19"/><line x1="22" y1="16" x2="22" y2="48"/><line x1="22" y1="26" x2="42" y2="18"/><line x1="22" y1="38" x2="42" y2="46"/><line x1="42" y1="18" x2="42" y2="6"/><line x1="42" y1="46" x2="42" y2="58"/><line x1="22" y1="32" x2="6" y2="32"/></svg>
+      <figcaption><span class="part-name">Transistor</span><span class="part-val">2N2222</span></figcaption>
+    </figure>
+    <figure class="part">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="18" width="28" height="28" rx="4"/><line x1="24" y1="18" x2="24" y2="8"/><line x1="32" y1="18" x2="32" y2="8"/><line x1="40" y1="18" x2="40" y2="8"/><line x1="24" y1="46" x2="24" y2="56"/><line x1="32" y1="46" x2="32" y2="56"/><line x1="40" y1="46" x2="40" y2="56"/></svg>
+      <figcaption><span class="part-name">IC</span><span class="part-val">ATmega328P</span></figcaption>
+    </figure>
+    <figure class="part">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="32" x2="16" y2="32"/><line x1="48" y1="32" x2="60" y2="32"/><rect x="16" y="24" width="32" height="16" rx="4"/><line x1="24" y1="16" x2="24" y2="48"/><line x1="40" y1="16" x2="40" y2="48"/></svg>
+      <figcaption><span class="part-name">Crystal</span><span class="part-val">16 MHz</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section section-tint" id="notebook">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">Notebook</p>
+      <h2>Bench notes</h2>
+      <a class="section-more" href="/knowledge/">All notes →</a>
+    </header>
+    <div class="grid grid-3">
+      {{ range first 3 (where site.RegularPages "Section" "knowledge") }}{{ partial "card-note.html" . }}
+      {{ end }}
+    </div>
+  </div>
+  </section>
+
+<section class="section wrap cta" data-reveal>
+  <p class="eyebrow">Signal me</p>
+  <h2 class="cta-title">Got a board that misbehaves, or an idea that needs a brain?</h2>
+  <a class="btn btn-solid" href="mailto:hello@example.org">Start a conversation</a>
+</section>
+
+
+  {{ end }}

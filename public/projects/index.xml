@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Projects on Skyrim — Field Studio</title>
+		<link>http://localhost:55106/projects/</link>
+		<description>Recent content in Projects on Skyrim — Field Studio</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 20 Jul 2025 08:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:55106/projects/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Tideline</title>
+				<link>http://localhost:55106/projects/tideline/</link>
+				<pubDate>Sun, 20 Jul 2025 08:00:00 +0000</pubDate>
+				<guid>http://localhost:55106/projects/tideline/</guid>
+				<description>A calm typographic forecast of tides and moon phases for UK coasts — charted data read as a daily rhythm.</description>
+			</item>
+			<item>
+				<title>Trailmark</title>
+				<link>http://localhost:55106/projects/trailmark/</link>
+				<pubDate>Sat, 01 Mar 2025 10:00:00 +0000</pubDate>
+				<guid>http://localhost:55106/projects/trailmark/</guid>
+				<description>A lightweight hiking-route planner that runs fully offline — GPX files in, elevation profiles and turn-by-turn notes …</description>
+			</item>
+			<item>
+				<title>Slow Radio</title>
+				<link>http://localhost:55106/projects/slow-radio/</link>
+				<pubDate>Thu, 15 Aug 2024 09:30:00 +0000</pubDate>
+				<guid>http://localhost:55106/projects/slow-radio/</guid>
+				<description>Ambient field recordings — rain, wind, looms — mixed live for production of a very calm radio station, streaming 24/7.</description>
+			</item>
+			<item>
+				<title>Herbarium OCR</title>
+				<link>http://localhost:55106/projects/herbarium-ocr/</link>
+				<pubDate>Sat, 02 Dec 2023 14:00:00 +0000</pubDate>
+				<guid>http://localhost:55106/projects/herbarium-ocr/</guid>
+				<description>A pipeline that digitises a local natural history society’s hand-written plant records into a searchable database.</description>
+			</item>
+			<item>
+				<title>Paper Static</title>
+				<link>http://localhost:55106/projects/paper-static/</link>
+				<pubDate>Wed, 01 Jun 2022 12:00:00 +0000</pubDate>
+				<guid>http://localhost:55106/projects/paper-static/</guid>
+				<description>A monthly newsletter of generative-art techniques explained clearly — one finished piece, and the code behind it, each …</description>
+			</item>
+	</channel>
+</rss>

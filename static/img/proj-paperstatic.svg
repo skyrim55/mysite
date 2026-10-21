@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(14)">
+      <circle cx="20" cy="20" r="4" fill="#223" opacity=".35"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#efe9da"/>
+  <rect width="800" height="600" fill="url(#dots)"/>
+  <g>
+    <circle cx="200" cy="200" r="70" fill="#c96f3f" opacity=".85"/>
+    <circle cx="320" cy="200" r="70" fill="#c96f3f" opacity=".6"/>
+    <circle cx="260" cy="120" r="70" fill="#c96f3f" opacity=".45"/>
+    <circle cx="480" cy="420" r="90" fill="#2f5d41" opacity=".8"/>
+    <circle cx="620" cy="420" r="90" fill="#2f5d41" opacity=".55"/>
+  </g>
+  <path d="M0 600 L120 460 240 560 380 400 520 520 680 360 800 460 L800 600Z" fill="#1c1f1a" opacity=".85"/>
+  <path d="M0 600 L120 480 240 560 380 430 520 530 680 400 800 480 L800 600Z" fill="#1c1f1a" opacity=".4"/>
+</svg>

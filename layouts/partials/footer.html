@@ -1,0 +1,26 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col" data-reveal>
+        <p class="footer-word">{{ .Site.Params.brand }}</p>
+        <p class="footer-blurb">{{ .Site.Params.tagline }}</p>
+      </div>
+      <div class="footer-col" data-reveal style="--d:.08s">
+        <p class="footer-label">Explore</p>
+        <a href="{{ "/portfolio/" | relURL }}">Portfolio</a>
+        <a href="{{ "/projects/" | relURL }}">Projects</a>
+        <a href="{{ "/knowledge/" | relURL }}">Field notes</a>
+      </div>
+      <div class="footer-col" data-reveal style="--d:.16s">
+        <p class="footer-label">Elsewhere</p>
+        <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+        <a href="{{ .Site.Params.github }}" rel="noopener">GitHub</a>
+        <a href="{{ .Site.Params.instagram }}" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© <span id="year">{{ now.Year }}</span> {{ .Site.Params.brand }} Field Studio</span>
+      <span>Built with Hugo · No trackers</span>
+    </div>
+  </div>
+</footer>

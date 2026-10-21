@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="page-head wrap">
+  <p class="eyebrow" data-reveal>{{ .Title }}</p>
+  <h1 data-reveal style="--d:.05s">{{ .Title }}</h1>
+  <div class="page-lede" data-reveal style="--d:.1s">{{ .Content }}</div>
+</section>
+
+<section class="section wrap">
+  {{- $types := slice -}}
+  {{- range .Pages -}}
+    {{- with .Params.phototype -}}{{- $types = $types | append . -}}{{- end -}}
+  {{- end -}}
+  {{- $types = $types | uniq | sort -}}
+  {{- if gt (len $types) 1 }}
+  <div class="filters" data-reveal role="tablist" aria-label="Filter photographs">
+    <button class="filter is-active" data-filter="all" type="button">All</button>
+    {{ range $types }}<button class="filter" data-filter="{{ . | lower }}" type="button">{{ . | title }}</button>
+    {{ end }}
+  </div>
+  {{- end }}
+
+  <div class="grid grid-3" id="filter-grid">
+    {{ range .Pages }}{{ partial "card-photo.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

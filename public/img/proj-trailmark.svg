@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="map" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe9da"/><stop offset="1" stop-color="#d8ddd0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#map)"/>
+  <g fill="none" stroke="#6b8470" stroke-width="2.5" opacity=".55">
+    <path d="M-20 320 C160 240 300 380 470 300 C600 240 700 300 820 250"/>
+    <path d="M-20 350 C160 270 300 410 470 330 C600 270 700 330 820 280"/>
+    <path d="M-20 380 C160 300 300 440 470 360 C600 300 700 360 820 310"/>
+    <path d="M-20 410 C160 330 300 470 470 390 C600 330 700 390 820 340"/>
+    <path d="M-20 250 C160 170 300 310 470 230 C600 170 700 230 820 180"/>
+    <path d="M-20 210 C160 130 300 270 470 190 C600 130 700 190 820 140"/>
+  </g>
+  <path d="M90 520 C220 420 340 460 430 350 C500 270 560 250 640 190" fill="none" stroke="#c96f3f" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
+  <circle cx="90" cy="520" r="10" fill="#c96f3f"/>
+  <circle cx="640" cy="190" r="12" fill="#2f5d41"/>
+  <circle cx="430" cy="350" r="9" fill="#fff" stroke="#2f5d41" stroke-width="3"/>
+  <circle cx="520" cy="120" r="34" fill="#2f5d41" opacity=".9"/>
+</svg>

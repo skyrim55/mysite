@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="page-head wrap">
+  <p class="eyebrow" data-reveal>{{ .Title }}</p>
+  <h1 data-reveal style="--d:.05s">{{ .Title }}</h1>
+  <div class="page-lede" data-reveal style="--d:.1s">{{ .Content }}</div>
+</section>
+
+<section class="section wrap">
+  <div class="grid grid-2">
+    {{ range .Pages }}{{ partial "card-project.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

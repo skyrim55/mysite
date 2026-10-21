@@ -1,0 +1,40 @@
+# Site configuration
+baseURL = "https://skyrim-field-studio.netlify.app/"
+locale = "en-us"
+defaultContentLanguage = "en"
+title = "Skyrim — Field Studio"
+disableHugoGeneratorInject = true
+
+# The site only publishes pages, sections and RSS/sitemap.
+# No tag or category archives are used, so disable those outputs.
+disableKinds = ["taxonomy", "term"]
+
+# Netlify builds with the Hugo version pinned in netlify.toml.
+[params]
+  brand = "Skyrim"
+  description = "Skyrim — Field Studio — photography, projects and field notes."
+  tagline = "A small field studio for photographs, building projects, and notes gathered from the natural world."
+  email = "hello@example.org"
+  github = "https://github.com/"
+  instagram = "https://www.instagram.com/"
+
+[markup.goldmark.extensions]
+  # Curly quotes and proper dashes, as in the original build.
+  typographer = true
+
+[menus]
+  [[menus.main]]
+    name = "Portfolio"
+    identifier = "portfolio"
+    pageRef = "/portfolio"
+    weight = 10
+  [[menus.main]]
+    name = "Projects"
+    identifier = "projects"
+    pageRef = "/projects"
+    weight = 20
+  [[menus.main]]
+    name = "Notes"
+    identifier = "knowledge"
+    pageRef = "/knowledge"
+    weight = 30

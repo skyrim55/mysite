@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe7d4"/><stop offset="1" stop-color="#e6e0cb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#leaf)"/>
+  <path d="M400 520 C320 460 260 360 270 240 C280 130 340 90 400 60 C460 90 520 130 530 240 C540 360 480 460 400 520Z" fill="#6b8f6c" opacity=".9"/>
+  <path d="M400 500 C340 450 300 380 300 260 L400 260Z" fill="#4f7554" opacity=".95"/>
+  <path d="M400 500 C460 450 500 380 500 260 L400 260Z" fill="#6b8f6c" opacity=".7"/>
+  <line x1="400" y1="500" x2="400" y2="120" stroke="#4f7554" stroke-width="4"/>
+  <path d="M400 300 C360 260 330 240 300 240 M400 300 C440 260 470 240 500 240" stroke="#4f7554" stroke-width="3" fill="none" opacity=".8"/>
+  <path d="M400 220 C360 200 330 190 300 190 M400 220 C440 200 470 190 500 190" stroke="#4f7554" stroke-width="2" fill="none" opacity=".6"/>
+  <path d="M400 500 C390 430 395 360 400 300 M400 500 C390 430 395 360 400 300" stroke="#4f7554" stroke-width="2" fill="none" opacity=".4"/>
+  <circle cx="240" cy="150" r="42" fill="url(#leaf)" opacity=".8"/>
+  <circle cx="240" cy="150" r="42" fill="none" stroke="#6b8f6c" stroke-width="2" opacity=".7"/>
+</svg>

@@ -1,0 +1,23 @@
+{{ define "main" }}
+<article class="section wrap">
+  <a class="back-link" href="{{ .CurrentSection.RelPermalink }}">← Back to portfolio</a>
+
+  <header class="photo-head" data-reveal>
+    <p class="eyebrow">{{ .Params.phototype | title }} · {{ .Params.place }}</p>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  <figure class="photo-frame" data-reveal style="--d:.08s">
+    <img src="{{ .Params.image }}" alt="{{ .Title }}">
+    <figcaption>{{ .Params.caption }}</figcaption>
+  </figure>
+
+  <div class="photo-meta" data-reveal style="--d:.14s">
+    <span><b>Camera</b> {{ .Params.camera }}</span>
+    <span><b>Lens</b> {{ .Params.lens }}</span>
+    <span><b>Captured</b> {{ .Date.Format "January 2, 2006" }}</span>
+  </div>
+
+  <div class="prose" data-reveal>{{ .Content }}</div>
+</article>
+{{ end }}

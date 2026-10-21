@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article class="section wrap">
+  <a class="back-link" href="{{ .CurrentSection.RelPermalink }}">← Back to field notes</a>
+
+  <header class="note-head" data-reveal>
+    <p class="eyebrow">{{ delimit .Params.topics " · " }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="card-meta reading-time">{{ .ReadingTime }} min read · {{ .Date.Format "January 2, 2006" }}</p>
+  </header>
+
+  <div class="prose prose-note" data-reveal style="--d:.08s">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.topics }}
+  <div class="tag-row tag-row-lg" data-reveal>{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
+  {{ end }}
+</article>
+{{ end }}

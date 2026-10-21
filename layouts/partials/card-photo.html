@@ -1,0 +1,12 @@
+<article class="card card-photo" data-reveal data-cat="{{ .Params.phototype | lower }}">
+  <a class="card-hit" href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
+    <div class="card-media">
+      <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+      <span class="card-badge">{{ .Params.phototype | title }}</span>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{ .Title }}</h3>
+      <p class="card-meta">{{ .Params.place }} · {{ .Params.year }}</p>
+    </div>
+  </a>
+</article>

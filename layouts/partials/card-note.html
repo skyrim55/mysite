@@ -1,0 +1,10 @@
+<article class="card card-note" data-reveal data-cat="{{ index .Params.topics 0 }}">
+  <a class="card-hit" href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
+    <div class="card-body">
+      <p class="card-kicker">{{ index .Params.topics 0 }}</p>
+      <h3 class="card-title">{{ .Title }}</h3>
+      <p class="card-desc">{{ .Params.summary }}</p>
+      <p class="card-meta reading-time">{{ .ReadingTime }} min read · {{ .Date.Format "Jan 2006" }}</p>
+    </div>
+  </a>
+</article>

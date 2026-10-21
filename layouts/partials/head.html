@@ -1,0 +1,27 @@
+{{- $title := .Site.Title -}}
+{{- if not .IsHome -}}
+  {{- $title = printf "%s · %s" .Title .Site.Title -}}
+{{- end -}}
+{{- $desc := .Params.description | default .Site.Params.description -}}
+{{ hugo.Generator }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<meta name="theme-color" content="#f4efe4">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="{{ (resources.Get "css/main.min.css" | fingerprint).RelPermalink }}">
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+
+{{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}">
+{{ end }}

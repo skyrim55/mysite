@@ -1,0 +1,36 @@
+{{ define "main" }}
+<article class="section wrap">
+  <a class="back-link" href="{{ .CurrentSection.RelPermalink }}">← Back to projects</a>
+
+  <header class="proj-head" data-reveal>
+    <p class="eyebrow">{{ .Params.status | title }} · {{ .Params.year }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="page-lede">{{ .Params.lede }}</p>
+  </header>
+
+  {{ with .Params.cover }}
+  <figure class="proj-cover" data-reveal style="--d:.08s">
+    <img src="{{ . }}" alt="{{ $.Title }}">
+  </figure>
+  {{ end }}
+
+  <div class="proj-layout">
+    <div class="prose" data-reveal>
+      {{ .Content }}
+      {{ with .Params.link }}
+      <p><a class="btn btn-solid" href="{{ . }}" rel="noopener">Visit project ↗</a></p>
+      {{ end }}
+    </div>
+
+    <aside class="proj-side" data-reveal style="--d:.1s">
+      <div class="side-row"><b>Role</b><span>{{ .Params.role }}</span></div>
+      <div class="side-row"><b>Year</b><span>{{ .Params.year }}</span></div>
+      {{ with .Params.stack }}
+      <div class="side-row"><b>Stack</b>
+        <ul class="tag-row">{{ range . }}<li class="tag">{{ . }}</li>{{ end }}</ul>
+      </div>
+      {{ end }}
+    </aside>
+  </div>
+</article>
+{{ end }}
